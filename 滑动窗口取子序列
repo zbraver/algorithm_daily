@@ -1,0 +1,32 @@
+public class MinSubArray {
+    /***
+     *
+     * @param s
+     * @param nums
+     * @return
+     * @describe:
+     * 1.暴力求解法，O(n2)不符合题意
+     * 2.滑动窗口（类似快慢指针）：O(n):窗口内始终保持值满足值为target,指针异步向右方遍历符合条件的序列，同时记录最小的序列长度。
+     * 中间参数用于最小值判断，初始值取对应类型的max.
+     */
+    public int minsubarray(int s, int[] nums) {
+        int l = 0;
+        int sum = 0;
+        int res = Integer.MAX_VALUE;//整数max
+        for (int r = 0; r < nums.length; r++) {
+            sum += nums[r];
+            while (sum >= s) {
+                res = Math.min(res, r - l + 1);
+                sum -= nums[l++];
+            }
+        }
+        return res == Integer.MAX_VALUE ? 0 : res;
+    }
+
+    public static void main(String[] args) {
+        int[] demo = {2, 3, 4, 6, 6, 7};
+        MinSubArray minSubArray = new MinSubArray();
+        int test = minSubArray.minsubarray(10, demo);
+        System.out.println(test);
+    }
+}
