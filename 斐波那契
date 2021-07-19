@@ -1,0 +1,14 @@
+class Demo:
+    '''Demo()类括号必须加'''
+    def f(self, n: int) -> int:
+        if n >= 2:
+            res = self.f(n - 2) + self.f(n - 1)
+            return res
+        elif n == 1:
+            return 1
+        else:
+            return 0
+
+
+if __name__ == '__main__':
+    print(Demo().f(4))
