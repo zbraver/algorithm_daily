@@ -8,7 +8,13 @@ class Demo:
             return 1
         else:
             return 0
-
+    
+    def tribonacci(self, n: int) -> int:
+    '''类似斐波那契的递归会引发python3递归太深错误'''
+        a, b, c = 0, 1, 1
+        for i in range(n):
+            a, b, c = b, c, a + b + c
+        return a
 
 if __name__ == '__main__':
     print(Demo().f(4))
